@@ -1,5 +1,7 @@
 package com.sanjeevnode.jobmanager.job;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sanjeevnode.jobmanager.company.Company;
 import jakarta.persistence.*;
 
 import java.util.Map;
@@ -14,6 +16,9 @@ public class Job {
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    @ManyToOne
+    private Company company;
 
     public Job() {
     }
@@ -73,6 +78,14 @@ public class Job {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
